@@ -49,3 +49,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# minhas alteracoes (Enrico)
+prog
+Resultados
+log.txt
+Resultado.csv
+saida.json
