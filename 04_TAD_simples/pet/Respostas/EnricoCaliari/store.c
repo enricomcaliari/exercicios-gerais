@@ -83,6 +83,7 @@ void imprimeProdutosLoja(tStore loja)
             imprimeProduto(loja.produtos[i]);
         }
     }
+    printf("\n");
 }
 
 void imprimeRelatorio(tStore loja)
@@ -92,6 +93,7 @@ void imprimeRelatorio(tStore loja)
     printf("FATURAMENTO: %.2f\n", loja.faturamento);
     printf("PRODUTOS EM ESTOQUE: %d\n", loja.nmProdutos);
     imprimeMaisVendido(loja);
+    printf("\n");
 }
 
 int obtemEstoqueLoja(tStore loja)

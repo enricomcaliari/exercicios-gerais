@@ -59,22 +59,22 @@ int main()
     scanf("%c\n", &menu);
     if (menu == 'C' || menu == 'c')
     {
-      printf("Nome do Produto: ID: Preco: Desconto: Estoque:\n");
+      printf("Nome do Produto: ID: Preco: Desconto: Estoque: \n");
       loja = cadastraProdutoMain(loja);
     }
     else if (menu == 'E' || menu == 'e')
     {
-      printf("Digite o id do Produto: Digite o numero de unidades:\n");
+      printf("Digite o id do Produto: Digite o numero de unidades: ");
       loja = estocaProdutoMain(loja);
     }
     else if (menu == 'V' || menu == 'v')
     {
-      printf("Digite o id do Produto: Digite o numero de unidades:\n");
+      printf("Digite o id do Produto: Digite o numero de unidades: ");
       loja = vendeProdutoMain(loja);
     }
     else if (menu == 'D' || menu == 'd')
     {
-      printf("Digite o id do Produto: Digite o novo desconto:\n");
+      printf("Digite o id do Produto: Digite o novo desconto: ");
       loja = atualizaDescontoMain(loja);
     }
     else if (menu == 'I' || menu == 'i')

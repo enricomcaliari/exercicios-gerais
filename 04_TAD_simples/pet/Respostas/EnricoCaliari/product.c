@@ -60,6 +60,12 @@ tProduct aumentaEstoqueProduto(tProduct produto, int qtd)
     if (qtd > 0)
     {
         produto.estoque += qtd;
+        printf("\n");
+    }
+    else
+    {
+        printf("Quantidade invalida.\n");
+        printf("\n");
     }
     return produto;
 }
@@ -70,6 +76,12 @@ tProduct vendeProduto(tProduct produto, int qtd)
     {
         produto.estoque -= qtd;
         produto.vendas += qtd;
+        printf("\n");
+    }
+    else
+    {
+        printf("Quantidade invalida.\n");
+        printf("\n");
     }
     return produto;
 }
@@ -79,6 +91,12 @@ tProduct atualizaDesconto(tProduct produto, float desconto)
     if (desconto >= 0 && desconto <= 1)
     {
         produto.desconto = desconto;
+        printf("\n");
+    }
+    else
+    {
+        printf("Quantidade invalida.\n");
+        printf("\n");
     }
     return produto;
 }
