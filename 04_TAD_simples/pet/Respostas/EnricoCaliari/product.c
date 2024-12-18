@@ -5,10 +5,15 @@
 tProduct leProduto()
 {
     tProduct produto;
-    scanf("%99[^\n]", produto.nome);
+    printf("Nome do Produto: ");
+    scanf("%[^\n]\n", produto.nome);
+    printf("ID: ");
     scanf("%d\n", &produto.id);
+    printf("Preco: ");
     scanf("%f\n", &produto.preco);
+    printf("Desconto: ");
     scanf("%f\n", &produto.desconto);
+    printf("Estoque: ");
     scanf("%d\n", &produto.estoque);
     produto.vendas = 0;
     return produto;
@@ -60,12 +65,10 @@ tProduct aumentaEstoqueProduto(tProduct produto, int qtd)
     if (qtd > 0)
     {
         produto.estoque += qtd;
-        printf("\n");
     }
     else
     {
-        printf("Quantidade invalida.\n");
-        printf("\n");
+        printf("Quantidade inválida.\n");
     }
     return produto;
 }
@@ -76,12 +79,10 @@ tProduct vendeProduto(tProduct produto, int qtd)
     {
         produto.estoque -= qtd;
         produto.vendas += qtd;
-        printf("\n");
     }
     else
     {
-        printf("Quantidade invalida.\n");
-        printf("\n");
+        printf("Quantidade inválida.\n");
     }
     return produto;
 }
@@ -91,12 +92,10 @@ tProduct atualizaDesconto(tProduct produto, float desconto)
     if (desconto >= 0 && desconto <= 1)
     {
         produto.desconto = desconto;
-        printf("\n");
     }
     else
     {
-        printf("Quantidade invalida.\n");
-        printf("\n");
+        printf("Quantidade inválida.\n");
     }
     return produto;
 }

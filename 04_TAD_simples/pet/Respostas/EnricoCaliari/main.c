@@ -10,7 +10,7 @@ void imprimeMenu()
   printf("D - Atualizar desconto de Produto\n");
   printf("I - Imprimir Produtos\n");
   printf("R - Imprimir Relatorio de Vendas\n");
-  printf("F - Finalizar programa\n");
+  printf("F - Finalizar Programa\n");
 }
 
 tStore cadastraProdutoMain(tStore loja)
@@ -59,7 +59,6 @@ int main()
     scanf("%c\n", &menu);
     if (menu == 'C' || menu == 'c')
     {
-      printf("Nome do Produto: ID: Preco: Desconto: Estoque: \n");
       loja = cadastraProdutoMain(loja);
     }
     else if (menu == 'E' || menu == 'e')
@@ -80,15 +79,18 @@ int main()
     else if (menu == 'I' || menu == 'i')
     {
       imprimeProdutosLoja(loja);
+      printf("\n");
     }
     else if (menu == 'R' || menu == 'r')
     {
       imprimeRelatorio(loja);
+      printf("\n");
     }
     else
     {
       break;
     }
+    printf("\n");
     imprimeMenu();
   }
   return 0;
