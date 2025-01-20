@@ -3,9 +3,9 @@
 
 Data lerData()
 {
-    Data data;
-    scanf("%d/%d/%d\n", &data.dia, &data.mes, &data.ano);
-    return data;
+    Data d;
+    scanf("%d/%d/%d\n", &d.dia, &d.mes, &d.ano);
+    return d;
 }
 
 void imprimeData(Data d)
@@ -19,24 +19,20 @@ int comparaData(Data d1, Data d2)
     {
         return 1;
     }
-    else
-        return 0;
+    return 0;
 }
 
 int calcularDiffAnosData(Data inicio, Data fim)
 {
-    int anos;
-
-    anos = fim.ano - inicio.ano;
+    int diferenca = fim.ano - inicio.ano;
 
     if (fim.mes < inicio.mes)
     {
-        anos -= 1;
+        diferenca--;
     }
     else if (fim.dia < inicio.dia)
     {
-        anos -= 1;
+        diferenca--;
     }
-
-    return anos;
+    return diferenca;
 }

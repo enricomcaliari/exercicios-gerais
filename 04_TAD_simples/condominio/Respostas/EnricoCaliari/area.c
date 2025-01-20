@@ -13,7 +13,9 @@ Area lerArea()
 
 void imprimeArea(Area a)
 {
-    printf("Nome: %s\nId: %s\nCapacidade: %d convidado(s)\n", a.nome, a.id, a.capacidade);
+    printf("Nome: %s\n", a.nome);
+    printf("Id: %s\n", a.id);
+    printf("Capacidade: %d convidado(s)\n", a.capacidade);
 }
 
 int comparaArea(Area a1, Area a2)
@@ -22,8 +24,7 @@ int comparaArea(Area a1, Area a2)
     {
         return 1;
     }
-    else
-        return 0;
+    return 0;
 }
 
 int verificaIdArea(Area a, char *id)
@@ -32,8 +33,7 @@ int verificaIdArea(Area a, char *id)
     {
         return 1;
     }
-    else
-        return 0;
+    return 0;
 }
 
 int getCapacidadeArea(Area a)

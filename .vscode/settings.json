@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "morador.h": "c",
+        "stdio.h": "c"
+    }
+}
