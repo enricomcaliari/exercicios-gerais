@@ -6,29 +6,29 @@
 #define MAX_AREAS 10
 #define MAX_RESERVAS 100
 
-Morador encontraMorador(int nMoradores, Morador *morador, char *cpf)
+int encontraMorador(int nMoradores, Morador *morador, char *cpf)
 {
     for (int i = 0; i < nMoradores; i++)
     {
         if (!strcmp(morador[i].cpf, cpf))
         {
-            return morador[i];
+            return i;
         }
     }
 
-    return morador[0];
+    return -1;
 }
 
-Area encontraArea(int nArea, Area *area, char *id)
+int encontraArea(int nArea, Area *area, char *id)
 {
     for (int i = 0; i < nArea; i++)
     {
         if (!strcmp(area[i].id, id))
         {
-            return area[i];
+            return i;
         }
     }
-    return area[0];
+    return -1;
 }
 
 int main()
@@ -75,9 +75,13 @@ int main()
         data = lerData();
         scanf("%d\n", &qtdConvidados);
 
-        if (verificaSolicitacaoReserva(reserva, nReservas, encontraMorador(nMoradores, morador, cpf), encontraArea(nAreas, area, id), data, qtdConvidados))
+        if (encontraMorador(nMoradores, morador, cpf) == -1 || encontraArea(nAreas, area, id) == -1)
         {
-            reserva[i] = criaReserva(encontraMorador(nMoradores, morador, cpf), encontraArea(nAreas, area, id), data, qtdConvidados);
+            continue;
+        }
+        else if (verificaSolicitacaoReserva(reserva, nReservas, morador[encontraMorador(nMoradores, morador, cpf)], area[encontraArea(nAreas, area, id)], data, qtdConvidados))
+        {
+            reserva[i] = criaReserva(morador[encontraMorador(nMoradores, morador, cpf)], area[encontraArea(nAreas, area, id)], data, qtdConvidados);
             imprimeReserva(reserva[i]);
         }
     }
