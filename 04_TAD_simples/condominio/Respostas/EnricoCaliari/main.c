@@ -73,7 +73,7 @@ int main()
         scanf("%[^\n]\n", id);
         scanf("%[^\n]\n", cpf);
         data = lerData();
-        scanf("%d", &qtdConvidados);
+        scanf("%d\n", &qtdConvidados);
 
         if (verificaSolicitacaoReserva(reserva, nReservas, encontraMorador(nMoradores, morador, cpf), encontraArea(nAreas, area, id), data, qtdConvidados))
         {
