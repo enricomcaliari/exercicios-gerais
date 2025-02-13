@@ -2,19 +2,15 @@
 
 tCela criaCela(int capacidade)
 {
-    tCela cela;
-    cela.capacidade = capacidade;
-    cela.nPresidiarios = 0;
-    return cela;
+    tCela c;
+    c.capacidade = capacidade;
+    c.nPresidiarios = 0;
+    return c;
 }
 
 int possuiVagaCela(tCela *cela)
 {
-    if (cela->nPresidiarios < cela->capacidade)
-    {
-        return 1;
-    }
-    return 0;
+    return cela->capacidade > cela->nPresidiarios;
 }
 
 int obtemNumeroPrisioneirosCela(tCela *cela)
@@ -26,14 +22,8 @@ void inserePrisioneiroCela(tCela *cela, tPrisioneiro prisioneiro)
 {
     if (possuiVagaCela(cela))
     {
-        for (int i = 0; i < cela->nPresidiarios; i++)
-        {
-            if (!prisionerioExiste(&cela->prisioneiros[i]))
-            {
-                cela->prisioneiros[i] = prisioneiro;
-                cela->nPresidiarios++;
-            }
-        }
+        cela->prisioneiros[cela->nPresidiarios] = prisioneiro;
+        cela->nPresidiarios++;
     }
 }
 
@@ -48,6 +38,7 @@ void fogePrisioneirosCela(tCela *cela)
     {
         fogePrisioneiro(&cela->prisioneiros[i]);
     }
+    cela->nPresidiarios = 0;
 }
 
 void passaDiaCela(tCela *cela)
@@ -55,5 +46,17 @@ void passaDiaCela(tCela *cela)
     for (int i = 0; i < cela->nPresidiarios; i++)
     {
         passaTempoPrisioneiro(&cela->prisioneiros[i]);
+    }
+    for (int i = 0; i < cela->nPresidiarios; i++)
+    {
+        if (acabouPenaPrisioneiro(&cela->prisioneiros[i]))
+        {
+            liberaPrisioneiroCumpriuPena(&cela->prisioneiros[i]);
+            for (int j = i; j < cela->nPresidiarios - 1; j++)
+            {
+                cela->prisioneiros[j] = cela->prisioneiros[j + 1];
+            }
+            cela->nPresidiarios--;
+        }
     }
 }

@@ -2,15 +2,16 @@
 
 tPrisioneiro criaPrisioneiro(char *nome, int pena)
 {
-    tPrisioneiro prisioneiro;
-    strcpy(prisioneiro.nome, nome);
-    prisioneiro.pena = pena;
-    return prisioneiro;
+    tPrisioneiro p;
+    strcpy(p.nome, nome);
+    p.pena = pena;
+    p.tempoPassado = 0;
+    return p;
 }
 
 void passaTempoPrisioneiro(tPrisioneiro *prisioneiro)
 {
-    prisioneiro->pena--;
+    prisioneiro->tempoPassado++;
 }
 
 void fogePrisioneiro(tPrisioneiro *prisioneiro)
@@ -20,20 +21,7 @@ void fogePrisioneiro(tPrisioneiro *prisioneiro)
 
 int acabouPenaPrisioneiro(tPrisioneiro *prisioneiro)
 {
-    if (!prisioneiro->pena)
-    {
-        return 1;
-    }
-    return 0;
-}
-
-int prisionerioExiste(tPrisioneiro *prisioneiro)
-{
-    if (prisioneiro != NULL)
-    {
-        return 1;
-    }
-    return 0;
+    return (prisioneiro->pena == prisioneiro->tempoPassado);
 }
 
 void liberaPrisioneiroCumpriuPena(tPrisioneiro *prisioneiro)
@@ -43,5 +31,5 @@ void liberaPrisioneiroCumpriuPena(tPrisioneiro *prisioneiro)
 
 void liberaPrisioneiroFimPrograma(tPrisioneiro *prisioneiro)
 {
-    printf("Prisioneiros liberados para a finalizacao do programa !!!\n");
+    printf("Detento %s liberado para finalizar o programa\n", prisioneiro->nome);
 }

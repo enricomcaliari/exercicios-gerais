@@ -32,15 +32,19 @@ void passaTempoPrisioneiro(tPrisioneiro* prisioneiro);
 */
 void fogePrisioneiro(tPrisioneiro* prisioneiro);
 
+/**
+ * @brief Retorna 1 quando a pena do prisioneiro termina
+*/
 int acabouPenaPrisioneiro(tPrisioneiro* prisioneiro);
-
-int prisionerioExiste(tPrisioneiro* prisioneiro);
 
 /**
  * @brief Imprime a liberação do prisioneiro na tela
 */
 void liberaPrisioneiroCumpriuPena(tPrisioneiro* prisioneiro);
 
+/**
+ * @brief Imprime a liberação do prisioneiro na tela para encerrar o programa
+*/
 void liberaPrisioneiroFimPrograma(tPrisioneiro* prisioneiro);
 
 #endif
