@@ -11,9 +11,9 @@ C
 Flamengo 1 x 4 Remo
 Santos 2 x 1 Vasco
 Palmeiras 3 x 1 Paysandu
-Rio-Branco 4 x 5 Desportiva
+Rio-Branco 2 x 6 Desportiva
 C
-Flamengo 3 x 1 Santos
+Flamengo 4 x 1 Santos
 Vasco 0 x 1 Palmeiras
 Rio-Branco 3 x 3 Paysandu
 Remo 1 x 2 Desportiva
@@ -36,5 +36,5 @@ C
 Flamengo 2 x 0 Paysandu
 Vasco 2 x 0 Desportiva
 Santos 2 x 0 Rio-Branco
-Remo 1 x 2 Palmeiras 
+Remo 1 x 2 Palmeiras
 F

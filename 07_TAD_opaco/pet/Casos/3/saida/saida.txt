@@ -7,8 +7,8 @@ F - Finalizar
 Classificação:
 Nome | Pontos | Vitorias | Derrotas | Empates | Saldo
 Palmeiras    | 03 | 01 | 00 | 00 | +10
-Flamengo     | 01 | 00 | 00 | 01 | +00
-Atletico-MG  | 01 | 00 | 00 | 01 | +00
+Flamengo     | 03 | 01 | 00 | 00 | +04
+Atletico-MG  | 00 | 00 | 01 | 00 | -04
 Vasco        | 00 | 00 | 01 | 00 | -10
 
 Menu:
