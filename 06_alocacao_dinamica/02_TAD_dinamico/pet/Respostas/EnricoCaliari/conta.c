@@ -1,13 +1,16 @@
+#include "conta.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "conta.h"
 
 Conta *CriaConta(Usuario *usuario, int nConta)
 {
-    Conta *conta = (Conta *)calloc(1, sizeof(Conta));
-    conta->usuario = CriaUsuario(usuario->nome, usuario->cpf);
+    Conta *conta = malloc(sizeof(Conta));
+    conta->usuario = usuario;
     conta->nConta = nConta;
+    conta->saldo = 0;
+    conta->movimentacoes = malloc(100 * sizeof(float));
+    conta->qtdMovimentacoes = 0;
+
     return conta;
 }
 
@@ -45,23 +48,27 @@ float RecuperaSaldo(Conta *conta)
 
 float Saque(Conta *conta, float valor)
 {
-    if (valor <= conta->saldo)
+    if (conta->saldo < valor)
     {
-        conta->saldo -= valor;
-        return valor;
+        return 0;
     }
-    return 0;
+    conta->saldo -= valor;
+    conta->movimentacoes[conta->qtdMovimentacoes] = -valor;
+    conta->qtdMovimentacoes++;
+
+    return valor;
 }
 
 float Transferencia(Conta *contaOri, Conta *contaDes, float valor)
 {
-    if (valor <= contaOri->saldo)
+    if (valor == 0)
     {
-        contaOri->saldo -= valor;
-        contaDes->saldo += valor;
-        return valor;
+        return 0;
     }
-    return 0;
+    Saque(contaOri, valor);
+    Deposito(contaDes, valor);
+
+    return valor;
 }
 
 float *RecuperaMovimentacoes(Conta *conta)
@@ -72,13 +79,12 @@ float *RecuperaMovimentacoes(Conta *conta)
 void Deposito(Conta *conta, float valor)
 {
     conta->saldo += valor;
+    conta->movimentacoes[conta->qtdMovimentacoes] = valor;
+    conta->qtdMovimentacoes++;
 }
 
 void DestroiConta(Conta *conta)
 {
-    if (conta != NULL)
-    {
-        DestroiUsuario(conta->usuario);
-        free(conta);
-    }
+    free(conta->movimentacoes);
+    free(conta);
 }
