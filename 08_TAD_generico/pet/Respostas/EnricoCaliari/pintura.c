@@ -23,7 +23,6 @@ Pintura *pintura_construct()
     pintura->material = malloc(MAXTAM_STRINGS * sizeof(char));
     pintura->anoPintura = 0;
 
-    // P Starry_Night Vincent_van_Gogh Pós-Impressionismo Óleo_sobre_Tela 1889
     scanf("%s %s %s %s %d\n", pintura->titulo, pintura->artista, pintura->movimento, pintura->material, &pintura->anoPintura);
 
     return pintura;
@@ -37,15 +36,6 @@ void pintura_print(void *p)
 {
     Pintura *pintura = (Pintura *)p;
 
-    /*
-    PINTURA
-    Titulo: Starry_Night
-    Artista: Vincent_van_Gogh
-    Movimento: Pós-Impressionismo
-    Material: Óleo_sobre_Tela
-    Ano: 1889
-    */
-
     printf("PINTURA\n");
     printf("Titulo: %s\n", pintura->titulo);
     printf("Artista: %s\n", pintura->artista);
@@ -58,7 +48,8 @@ void pintura_print(void *p)
 // apropriada para os dados da estrutura Pintura.
 // Parâmetros:
 //  p - Ponteiro para a Pintura a ser destruída.
-void pintura_destroy(void *p) {
+void pintura_destroy(void *p)
+{
     Pintura *pintura = (Pintura *)p;
 
     free(pintura->titulo);

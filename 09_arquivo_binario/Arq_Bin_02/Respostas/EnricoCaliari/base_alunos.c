@@ -4,6 +4,9 @@
 #include "aluno.h"
 #include "base_alunos.h"
 
+/**
+ * @brief Estrutura para representar uma base de alunos.
+ */
 struct BaseAlunos
 {
     tAluno **alunos;
@@ -19,7 +22,7 @@ tBaseAlunos *CriarBaseAlunos()
 {
     tBaseAlunos *baseAlunos = (tBaseAlunos *)malloc(sizeof(tBaseAlunos));
     baseAlunos->alunos = (tAluno **)malloc(sizeof(tAluno *));
-    baseAlunos->qtdAlunos = 0;
+    baseAlunos->qtdAlunos = 1;
     return baseAlunos;
 }
 
@@ -30,12 +33,15 @@ tBaseAlunos *CriarBaseAlunos()
  */
 void DestruirBaseAlunos(tBaseAlunos *baseAlunos)
 {
-    for (int i = 0; i < baseAlunos->qtdAlunos; i++)
+    if (baseAlunos != NULL)
     {
-        DestruirAluno(baseAlunos->alunos[i]);
+        for (int i = 0; i < baseAlunos->qtdAlunos; i++)
+        {
+            DestruirAluno(baseAlunos->alunos[i]);
+        }
+        free(baseAlunos->alunos);
+        free(baseAlunos);
     }
-    free(baseAlunos->alunos);
-    free(baseAlunos);
 }
 
 /**
@@ -48,12 +54,9 @@ void LerBaseAlunos(tBaseAlunos *baseAlunos, char *nomeArquivo)
 {
     FILE *arquivo_binario = fopen(nomeArquivo, "rb");
 
-    int qtdAlunos;
-    fread(&qtdAlunos, sizeof(int), 1, arquivo_binario);
-    baseAlunos->qtdAlunos = qtdAlunos;
+    fread(&baseAlunos->qtdAlunos, sizeof(int), 1, arquivo_binario);
 
-    baseAlunos->alunos = (tAluno **)realloc(baseAlunos->alunos, qtdAlunos * sizeof(tAluno *));
-
+    baseAlunos->alunos = (tAluno **)realloc(baseAlunos->alunos, baseAlunos->qtdAlunos * sizeof(tAluno *));
     for (int i = 0; i < baseAlunos->qtdAlunos; i++)
     {
         baseAlunos->alunos[i] = LeAluno(arquivo_binario);

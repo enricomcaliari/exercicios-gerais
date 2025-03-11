@@ -22,7 +22,6 @@ Livro *livro_construct()
     livro->genero = malloc(MAXTAM_STRINGS * sizeof(char));
     livro->editora = malloc(MAXTAM_STRINGS * sizeof(char));
 
-    // L 1984 George_Orwell Distopia Companhia_das_Letras 1949
     scanf("%s %s %s %s %d\n", livro->titulo, livro->autor, livro->genero, livro->editora, &livro->anoPublicacao);
 
     return livro;
@@ -48,7 +47,8 @@ void livro_print(void *l)
 // e seus dados associados de forma adequada.
 // Parâmetros:
 //  l - Ponteiro para o Livro a ser destruído.
-void livro_destroy(void *l) {
+void livro_destroy(void *l)
+{
     Livro *livro = (Livro *)l;
 
     free(livro->titulo);

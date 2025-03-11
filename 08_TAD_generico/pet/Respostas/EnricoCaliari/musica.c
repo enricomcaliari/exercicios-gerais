@@ -26,7 +26,6 @@ Musica *musica_construct()
     musica->participantes = calloc(MAXTAM_STRINGS, sizeof(char));
     musica->countParticipantes = 0;
 
-    // M Bohemian_Rhapsody Queen 3 Freddie_Mercury Brian_May Roger_Taylor A_Night_at_the_Opera Rock
     scanf("%s %s %d ", musica->titulo, musica->artista, &musica->countParticipantes);
 
     for (int i = 0; i < musica->countParticipantes; i++)
@@ -52,12 +51,6 @@ void musica_print(void *m)
 {
     Musica *musica = (Musica *)m;
 
-    /*
-    MUSICA
-    Queen - Bohemian_Rhapsody (feat. Freddie_Mercury, Brian_May, Roger_Taylor)
-    Album: A_Night_at_the_Opera
-    Genero: Rock
-    */
     printf("MUSICA\n");
     printf("%s - %s", musica->artista, musica->titulo);
 

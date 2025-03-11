@@ -6,6 +6,9 @@
 #define TAM_MAX_DATA 11
 #define TAM_MAX_CURSO 50
 
+/**
+ * @brief Estrutura para representar um aluno.
+ */
 struct Aluno
 {
     char *nome;
@@ -65,19 +68,13 @@ void DestruirAluno(tAluno *aluno)
  */
 tAluno *LeAluno(FILE *arquivo_binario)
 {
-    tAluno *aluno = CriarAluno("vazio", "vazio", "vazio", 0, 0);
-    
+    tAluno *aluno = CriarAluno("", "", "", 0, 0);
+
     fread(aluno->nome, sizeof(char), TAM_MAX_NOME, arquivo_binario);
     fread(aluno->dataNascimento, sizeof(char), TAM_MAX_DATA, arquivo_binario);
     fread(aluno->curso, sizeof(char), TAM_MAX_CURSO, arquivo_binario);
-
-    int periodo;
-    fread(&periodo, sizeof(int), 1, arquivo_binario);
-    aluno->periodo = periodo;
-
-    float coeficienteRendimento;
-    fread(&coeficienteRendimento, sizeof(float), 1, arquivo_binario);
-    aluno->coeficienteRendimento = coeficienteRendimento;
+    fread(&aluno->periodo, sizeof(int), 1, arquivo_binario);
+    fread(&aluno->coeficienteRendimento, sizeof(float), 1, arquivo_binario);
 
     return aluno;
 }

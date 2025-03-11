@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include "base_alunos.h"
 
+#define TAM_MAX_DIRETORIO 50
+
 int main()
 {
-    tBaseAlunos *baseAlunos = CriarBaseAlunos();
-
-    char diretorio[50];
+    char diretorio[TAM_MAX_DIRETORIO];
     scanf("%s\n", diretorio);
 
+    tBaseAlunos *baseAlunos = CriarBaseAlunos();
     LerBaseAlunos(baseAlunos, diretorio);
 
     printf("Coeficiente de Rendimento Medio da base de alunos: %.2f\n", GetCoeficienteRendimentoMedioBaseAlunos(baseAlunos));

@@ -51,7 +51,8 @@ void roteiro_inserir_midia(Roteiro *r, void *dado, PrintFunction print_fn, FreeF
 //  r - Ponteiro para o Roteiro a ser impresso.
 void roteiro_imprimir_midias(Roteiro *r)
 {
-    if (r->countMidias == 0) {
+    if (r->countMidias == 0)
+    {
         printf("SEM MIDIAS PARA IMPRIMIR\n");
         return;
     }
